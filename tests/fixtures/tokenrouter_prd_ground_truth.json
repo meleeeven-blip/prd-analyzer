@@ -1,0 +1,212 @@
+{
+  "_comment": "tokenrouter_prd.md 的人工标注 ground truth。来源：真实开源项目 PRD（github.com/GouBuliya/TokenRouter），已轻微整理保留原意。",
+  "source_file": "tokenrouter_prd.md",
+  "requirements": {
+    "total": 22,
+    "functional": [
+      {
+        "id": "F-01",
+        "description": "提供 OpenAI 兼容的聊天接口（POST /v1/chat/completions），开发者无需修改代码即可接入",
+        "section": "核心接口",
+        "priority": "high"
+      },
+      {
+        "id": "F-02",
+        "description": "接入 DeepSeek V3.2 作为 MVP 出站模型，架构预留 Anthropic / OpenAI 扩展位",
+        "section": "Outbound Adapter",
+        "priority": "high"
+      },
+      {
+        "id": "F-03",
+        "description": "支持流式调用（SSE），提供实时响应体验",
+        "section": "User Stories",
+        "priority": "high"
+      },
+      {
+        "id": "F-04",
+        "description": "支持函数调用（Function Calling / Tool Use），用于构建 Agent 类应用",
+        "section": "User Stories",
+        "priority": "high"
+      },
+      {
+        "id": "F-05",
+        "description": "通过结构收敛（Chunker → Arranger → Canonicalizer）最大化厂商侧 KV Cache 命中率，降低调用成本",
+        "section": "核心模块",
+        "priority": "high"
+      },
+      {
+        "id": "F-06",
+        "description": "非流式相同请求去重（Dedup），复用已有响应以进一步节省成本",
+        "section": "核心模块",
+        "priority": "medium"
+      },
+      {
+        "id": "F-07",
+        "description": "API Key 认证鉴权，所有请求须携带有效 API Key",
+        "section": "Auth Middleware",
+        "priority": "high"
+      },
+      {
+        "id": "F-08",
+        "description": "API Key 管理功能，支持为不同项目创建和管理多个 Key",
+        "section": "管理后台 API",
+        "priority": "high"
+      },
+      {
+        "id": "F-09",
+        "description": "用量统计功能，展示 API 调用量和成本节省数据",
+        "section": "管理后台 API",
+        "priority": "medium"
+      },
+      {
+        "id": "F-10",
+        "description": "计费查询功能，提供计费明细查询",
+        "section": "管理后台 API",
+        "priority": "medium"
+      },
+      {
+        "id": "F-11",
+        "description": "速率限制（Rate Limit Middleware），防止滥用",
+        "section": "核心模块",
+        "priority": "medium"
+      },
+      {
+        "id": "F-12",
+        "description": "健康检查接口（GET /health），用于监控服务状态",
+        "section": "核心接口",
+        "priority": "medium"
+      },
+      {
+        "id": "F-13",
+        "description": "模型列表接口（GET /v1/models），展示当前可用模型",
+        "section": "核心接口",
+        "priority": "medium"
+      },
+      {
+        "id": "F-14",
+        "description": "Prometheus 指标接口（GET /metrics），支持云原生监控",
+        "section": "核心接口",
+        "priority": "low"
+      },
+      {
+        "id": "F-15",
+        "description": "非标准字段透传（Envelope.Raw），确保厂商原生能力零损失（如 Anthropic thinking、cache_control）",
+        "section": "核心模块",
+        "priority": "medium"
+      }
+    ],
+    "non_functional": [
+      {
+        "id": "NF-01",
+        "description": "P99 延迟增加 < 100ms（不含厂商响应时间）",
+        "section": "验收标准",
+        "priority": "high"
+      },
+      {
+        "id": "NF-02",
+        "description": "KV Cache 命中率 > 40%（通过 DeepSeek prompt_cache_hit_tokens 度量）",
+        "section": "验收标准",
+        "priority": "high"
+      },
+      {
+        "id": "NF-03",
+        "description": "Canonicalizer 单元测试覆盖率必须达到 100%",
+        "section": "测试模块",
+        "priority": "high"
+      },
+      {
+        "id": "NF-04",
+        "description": "Chunker / Arranger / Hasher 等核心模块单元测试覆盖率 ≥ 80%",
+        "section": "测试模块",
+        "priority": "high"
+      },
+      {
+        "id": "NF-05",
+        "description": "Outbound Adapter 测试覆盖率 ≥ 70%",
+        "section": "测试模块",
+        "priority": "medium"
+      },
+      {
+        "id": "NF-06",
+        "description": "无状态服务设计，服务本身不持有请求状态",
+        "section": "核心架构",
+        "priority": "medium"
+      },
+      {
+        "id": "NF-07",
+        "description": "MVP 阶段采用单体架构，不做微服务拆分",
+        "section": "核心架构",
+        "priority": "medium"
+      }
+    ]
+  },
+  "ambiguities": {
+    "total": 8,
+    "items": [
+      {
+        "id": "A-01",
+        "type": "explicit",
+        "location": "5.1 技术栈 / 5.5 优先级",
+        "description": "管理后台前端界面是否属于 MVP 范围？技术栈标注为「Phase 2」，但优先级 P2 中列有「管理后台界面」，实际交付时间点不明确。"
+      },
+      {
+        "id": "A-02",
+        "type": "explicit",
+        "location": "6.3 验收标准",
+        "description": "「完成 50 个子 Agent 测试工程师的验收」含义不明——是自动化测试 Agent 还是人工测试员？验收通过的具体标准是什么？"
+      },
+      {
+        "id": "A-03",
+        "type": "implicit",
+        "location": "F-08 / 管理后台 API",
+        "description": "API Key 管理的具体功能范围未定义：是否支持权限分级（只读/读写）、过期时间、IP 白名单、使用配额限制？"
+      },
+      {
+        "id": "A-04",
+        "type": "implicit",
+        "location": "F-10 / 计费查询",
+        "description": "计费查询的数据粒度未定义：按请求/天/月汇总？展示哪些维度（模型、Key、时间段）？"
+      },
+      {
+        "id": "A-05",
+        "type": "implicit",
+        "location": "F-06 / Dedup",
+        "description": "请求去重的有效时间窗口未定义：相同请求在多长时间内触发去重（秒级？分钟级）？不同模型是否共用同一去重策略？"
+      },
+      {
+        "id": "A-06",
+        "type": "implicit",
+        "location": "F-11 / Rate Limit Middleware",
+        "description": "速率限制策略未定义：按用户/API Key/IP 限速？QPS 或并发上限是多少？超限后是拒绝还是排队？"
+      },
+      {
+        "id": "A-07",
+        "type": "implicit",
+        "location": "1.3 目标用户 / 管理后台",
+        "description": "目标用户定义为「个人开发者」，但管理后台暗示多用户场景——多用户共用同一实例时，用量、计费、API Key 数据如何隔离？"
+      },
+      {
+        "id": "A-08",
+        "type": "implicit",
+        "location": "F-02 / DeepSeek V3.2",
+        "description": "DeepSeek V3.2 服务不可用时的降级策略未定义：直接返回错误、自动重试、还是切换到备用模型？"
+      }
+    ]
+  },
+  "evaluation_metrics": {
+    "requirement_recall": {
+      "formula": "AI提取需求数（与ground truth匹配）/ 22",
+      "target": "≥ 0.80",
+      "note": "匹配标准：语义覆盖即可，不要求措辞完全一致"
+    },
+    "ambiguity_recall": {
+      "formula": "AI检测到的歧义数（与ground truth匹配）/ 8",
+      "target": "≥ 0.60",
+      "note": "显性歧义（A-01~A-02）目标 ≥ 0.80，隐性歧义（A-03~A-08）目标 ≥ 0.40"
+    },
+    "task_completeness": {
+      "formula": "含 title + acceptance_criteria + effort_estimate 的任务数 / 总任务数",
+      "target": "= 1.00"
+    }
+  }
+}

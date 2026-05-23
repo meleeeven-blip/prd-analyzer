@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m pytest tests/ --collect-only -q)",
+      "Bash(python evaluate.py --help)",
+      "Bash(DASHSCOPE_API_KEY=\"sk-3f4b3d46f2924d8ba1fbc7508b8d3b26\" python evaluate.py --verbose --save eval_report.json)",
+      "Bash(DASHSCOPE_API_KEY=sk-3f4b3d46f2924d8ba1fbc7508b8d3b26 python -c ' *)",
+      "Bash(python -m pytest tests/ -v -m \"not integration\" -q)",
+      "Bash(python *)",
+      "Bash(Test-Path *)"
+    ]
+  }
+}

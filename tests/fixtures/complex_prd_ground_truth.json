@@ -1,0 +1,249 @@
+{
+  "_comment": "complex_prd.md 的人工标注 ground truth，用于 evaluate.py 的效果评测。优先级仅供参考，不计入评测指标。",
+  "source_file": "complex_prd.md",
+  "requirements": {
+    "total": 23,
+    "functional": [
+      {
+        "id": "F-01",
+        "description": "用户可从商品列表页和详情页将商品加入购物车",
+        "section": "购物车",
+        "priority": "high"
+      },
+      {
+        "id": "F-02",
+        "description": "购物车跨 Session 持久化，用户不应丢失购物车内容",
+        "section": "购物车",
+        "priority": "high"
+      },
+      {
+        "id": "F-03",
+        "description": "用户可修改购物车中的商品数量或删除商品",
+        "section": "购物车",
+        "priority": "high"
+      },
+      {
+        "id": "F-04",
+        "description": "购物车实时显示含税价格总计",
+        "section": "购物车",
+        "priority": "medium"
+      },
+      {
+        "id": "F-05",
+        "description": "用户可在购物车中使用折扣码",
+        "section": "购物车",
+        "priority": "medium"
+      },
+      {
+        "id": "F-06",
+        "description": "系统须处理库存限制，用户不能超出库存数量下单",
+        "section": "购物车",
+        "priority": "high"
+      },
+      {
+        "id": "F-07",
+        "description": "结账须要求用户登录",
+        "section": "结账流程",
+        "priority": "high",
+        "note": "「访客结账待定」部分归入 A-01 歧义，需求本身确认为「必须登录」"
+      },
+      {
+        "id": "F-08",
+        "description": "用户可填写或选择收货地址",
+        "section": "结账流程",
+        "priority": "high"
+      },
+      {
+        "id": "F-09",
+        "description": "系统支持多种支付方式",
+        "section": "结账流程",
+        "priority": "high"
+      },
+      {
+        "id": "F-10",
+        "description": "用户在最终确认前可查看订单摘要",
+        "section": "结账流程",
+        "priority": "high"
+      },
+      {
+        "id": "F-11",
+        "description": "支付成功后向用户发送确认邮件",
+        "section": "结账流程",
+        "priority": "high"
+      },
+      {
+        "id": "F-12",
+        "description": "支付失败时展示明确的错误信息并允许重试",
+        "section": "结账流程",
+        "priority": "high"
+      },
+      {
+        "id": "F-13",
+        "description": "用户可查看历史订单",
+        "section": "订单管理",
+        "priority": "medium"
+      },
+      {
+        "id": "F-14",
+        "description": "用户可追踪当前订单状态",
+        "section": "订单管理",
+        "priority": "medium"
+      },
+      {
+        "id": "F-15",
+        "description": "用户可在下单后的合理时间窗口内取消订单",
+        "section": "订单管理",
+        "priority": "medium"
+      }
+    ],
+    "non_functional": [
+      {
+        "id": "N-01",
+        "description": "购物车操作（增删改）须在 200ms 内完成",
+        "section": "性能",
+        "priority": "high"
+      },
+      {
+        "id": "N-02",
+        "description": "结账页面须在 2 秒内加载完成",
+        "section": "性能",
+        "priority": "high"
+      },
+      {
+        "id": "N-03",
+        "description": "系统需支撑大促期间的流量峰值",
+        "section": "性能",
+        "priority": "high"
+      },
+      {
+        "id": "N-04",
+        "description": "支付卡数据绝不存储于服务器",
+        "section": "安全性",
+        "priority": "high"
+      },
+      {
+        "id": "N-05",
+        "description": "所有结账页面须使用 HTTPS",
+        "section": "安全性",
+        "priority": "high"
+      },
+      {
+        "id": "N-06",
+        "description": "用户支付信息通过符合 PCI 标准的支付处理商处理",
+        "section": "安全性",
+        "priority": "high"
+      },
+      {
+        "id": "N-07",
+        "description": "购物车数据在系统故障时不得丢失",
+        "section": "可靠性",
+        "priority": "high"
+      },
+      {
+        "id": "N-08",
+        "description": "支付处理须幂等以防止重复扣款",
+        "section": "可靠性",
+        "priority": "high"
+      }
+    ]
+  },
+  "ambiguities": {
+    "total": 13,
+    "items": [
+      {
+        "id": "A-01",
+        "type": "explicit",
+        "location": "结账流程 · F-07",
+        "description": "本期是否支持访客结账？若支持，需采集哪些用户信息？"
+      },
+      {
+        "id": "A-02",
+        "type": "explicit",
+        "location": "结账流程 · F-09",
+        "description": "首发支持哪些支付方式？信用卡已确认，PayPal、Apple Pay 是否纳入？"
+      },
+      {
+        "id": "A-03",
+        "type": "explicit",
+        "location": "订单管理 · F-15",
+        "description": "订单取消的「合理时间窗口」具体是多久——1 小时还是 24 小时？"
+      },
+      {
+        "id": "A-04",
+        "type": "explicit",
+        "location": "订单管理 · F-15",
+        "description": "订单部分商品取消时，如何处理部分退款？"
+      },
+      {
+        "id": "A-05",
+        "type": "explicit",
+        "location": "结账流程 · F-08",
+        "description": "第一期是否需要支持国际配送？"
+      },
+      {
+        "id": "A-06",
+        "type": "implicit",
+        "location": "购物车 · F-04",
+        "description": "含税价格的税率规则未定义：按用户收货地址动态计算还是固定税率？适用哪种税（增值税/消费税）？"
+      },
+      {
+        "id": "A-07",
+        "type": "implicit",
+        "location": "购物车 · F-05",
+        "description": "折扣码是否可叠加使用？单次订单使用数量上限？是否有有效期或使用次数限制？"
+      },
+      {
+        "id": "A-08",
+        "type": "implicit",
+        "location": "购物车 · F-06",
+        "description": "库存处理策略未定义：是加购时实时锁定库存，还是提交订单时校验？高并发下如何防止超卖？"
+      },
+      {
+        "id": "A-09",
+        "type": "implicit",
+        "location": "结账流程 · F-08",
+        "description": "用户可保存多个收货地址吗？数量上限是多少？"
+      },
+      {
+        "id": "A-10",
+        "type": "implicit",
+        "location": "结账流程 · F-11",
+        "description": "确认邮件的内容字段未定义（包含哪些订单信息）；需在多久内发出（实时还是可延迟）？"
+      },
+      {
+        "id": "A-11",
+        "type": "implicit",
+        "location": "订单管理 · F-14",
+        "description": "订单状态机未定义：有哪些状态（待付款、已付款、配送中……）？状态转换规则是什么？"
+      },
+      {
+        "id": "A-12",
+        "type": "implicit",
+        "location": "非功能需求 · N-03",
+        "description": "「大促期间流量峰值」没有量化：正常流量的几倍？是否有具体 QPS / 并发用户数目标？"
+      },
+      {
+        "id": "A-13",
+        "type": "implicit",
+        "location": "购物车 · F-02",
+        "description": "跨 Session 持久化是否包含跨设备场景（手机加购后 PC 端能否看到同一购物车）？"
+      }
+    ]
+  },
+  "evaluation_metrics": {
+    "requirement_recall": {
+      "formula": "AI提取需求数（与ground truth匹配）/ 23",
+      "target": "≥ 0.80",
+      "note": "匹配标准：语义覆盖即可，不要求措辞完全一致"
+    },
+    "ambiguity_recall": {
+      "formula": "AI检测到的歧义数（与ground truth匹配）/ 13",
+      "target": "≥ 0.60",
+      "note": "显性歧义（A-01~A-05）目标 ≥ 0.80，隐性歧义（A-06~A-13）目标 ≥ 0.40"
+    },
+    "task_completeness": {
+      "formula": "含 title + acceptance_criteria + effort_estimate 的任务数 / 总任务数",
+      "target": "= 1.00"
+    }
+  }
+}

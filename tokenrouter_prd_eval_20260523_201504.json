@@ -1,0 +1,238 @@
+{
+  "config": {
+    "prd": "tests\\fixtures\\tokenrouter_prd.md",
+    "ground_truth": "tests\\fixtures\\tokenrouter_prd_ground_truth.json",
+    "method": "llm-judge",
+    "threshold": null,
+    "model": "deepseek-v4-flash"
+  },
+  "ai_output_summary": {
+    "requirements": 72,
+    "ambiguities": 16,
+    "tasks": 36
+  },
+  "task_completeness": {
+    "completeness": 1.0,
+    "total": 36,
+    "complete_count": 36,
+    "incomplete": []
+  },
+  "scores": {
+    "task_completeness": 1.0,
+    "requirement_recall": 0.9091,
+    "ambiguity_overall_recall": 0.125,
+    "ambiguity_explicit_recall": 0.5,
+    "ambiguity_implicit_recall": 0.0
+  },
+  "requirement_recall": {
+    "matched": [
+      {
+        "id": "F-01",
+        "gt": "提供 OpenAI 兼容的聊天接口（POST /v1/chat/completions），开发者无需修改代码即可接入",
+        "best_match": "YES  \n第1条直接指定了相同的 API 端点（POST /v1/chat/completions）并强调 OpenAI 兼容性，隐含了开发者无需修改代码即可接入的核心意图。",
+        "score": 1.0
+      },
+      {
+        "id": "F-02",
+        "gt": "接入 DeepSeek V3.2 作为 MVP 出站模型，架构预留 Anthropic / OpenAI 扩展位",
+        "best_match": "YES，AI生成的第2条和第3条组合实现了“接入DeepSeek V3.2出站适配器并预留Anthropic/OpenAI扩展位”，与参考条目语义等价。",
+        "score": 1.0
+      },
+      {
+        "id": "F-03",
+        "gt": "支持流式调用（SSE），提供实时响应体验",
+        "best_match": "YES，第18条“支持流式调用（Streaming），通过SSE返回”与参考条目语义等价。",
+        "score": 1.0
+      },
+      {
+        "id": "F-04",
+        "gt": "支持函数调用（Function Calling / Tool Use），用于构建 Agent 类应用",
+        "best_match": "YES，第19条“支持函数调用（Function Calling）功能”与参考条目核心意图相同。",
+        "score": 1.0
+      },
+      {
+        "id": "F-06",
+        "gt": "非流式相同请求去重（Dedup），复用已有响应以进一步节省成本",
+        "best_match": "YES，因为第10条明确描述“非流式请求去重，相同请求复用响应”，与参考条目核心意图一致。",
+        "score": 1.0
+      },
+      {
+        "id": "F-07",
+        "gt": "API Key 认证鉴权，所有请求须携带有效 API Key",
+        "best_match": "YES\n\n第12条\"实现 Auth Middleware：基于 API Key 的请求认证\"与参考条目核心意图一致，均要求通过API Key进行请求认证。",
+        "score": 1.0
+      },
+      {
+        "id": "F-08",
+        "gt": "API Key 管理功能，支持为不同项目创建和管理多个 Key",
+        "best_match": "YES，因为第22条直接对应了参考条目的核心功能。",
+        "score": 1.0
+      },
+      {
+        "id": "F-10",
+        "gt": "计费查询功能，提供计费明细查询",
+        "best_match": "YES，第24条“提供计费查询功能：展示消费情况和成本节省数据”与参考条目核心意图一致，都涉及计费查询。",
+        "score": 1.0
+      },
+      {
+        "id": "F-11",
+        "gt": "速率限制（Rate Limit Middleware），防止滥用",
+        "best_match": "YES\n\nAI 列表第 13 条“实现 Rate Limit Middleware：速率限制功能”与参考条目核心意图完全相同。",
+        "score": 1.0
+      },
+      {
+        "id": "F-12",
+        "gt": "健康检查接口（GET /health），用于监控服务状态",
+        "best_match": "YES\n\n第16条“提供 GET /health 健康检查接口”与参考条目语义等价，均指同一接口及其用途。",
+        "score": 1.0
+      },
+      {
+        "id": "F-13",
+        "gt": "模型列表接口（GET /v1/models），展示当前可用模型",
+        "best_match": "YES，因为第15条明确提供了GET /v1/models接口并返回支持的模型列表，核心意图和覆盖范围与参考条目完全一致。",
+        "score": 1.0
+      },
+      {
+        "id": "F-14",
+        "gt": "Prometheus 指标接口（GET /metrics），支持云原生监控",
+        "best_match": "YES，因为第17条明确提供GET /metrics接口并暴露Prometheus指标，与参考条目的核心意图和覆盖范围完全一致。",
+        "score": 1.0
+      },
+      {
+        "id": "F-15",
+        "gt": "非标准字段透传（Envelope.Raw），确保厂商原生能力零损失（如 Anthropic thinking、cache_control）",
+        "best_match": "YES，第20条与参考条目核心意图一致，都要求透传Anthropic thinking、cache_control等厂商原生功能。",
+        "score": 1.0
+      },
+      {
+        "id": "NF-01",
+        "gt": "P99 延迟增加 < 100ms（不含厂商响应时间）",
+        "best_match": "YES，第29条与参考条目完全一致。",
+        "score": 1.0
+      },
+      {
+        "id": "NF-02",
+        "gt": "KV Cache 命中率 > 40%（通过 DeepSeek prompt_cache_hit_tokens 度量）",
+        "best_match": "YES，因为第30条与参考条目措辞完全相同。",
+        "score": 1.0
+      },
+      {
+        "id": "NF-03",
+        "gt": "Canonicalizer 单元测试覆盖率必须达到 100%",
+        "best_match": "YES  \n第31条“Canonicalizer 模块测试覆盖率必须达到 100%”与参考条目核心意图完全一致。",
+        "score": 1.0
+      },
+      {
+        "id": "NF-04",
+        "gt": "Chunker / Arranger / Hasher 等核心模块单元测试覆盖率 ≥ 80%",
+        "best_match": "YES  \nAI列表中第32、33、34条分别指定Chunker、Arranger、Hasher模块最低测试覆盖率达到80%，与参考条目要求的核心模块单元测试覆盖率≥80%语义完全一致。",
+        "score": 1.0
+      },
+      {
+        "id": "NF-05",
+        "gt": "Outbound Adapter 测试覆盖率 ≥ 70%",
+        "best_match": "YES，第35条直接指定Outbound Adapters模块最低测试覆盖率达到70%，与参考条目核心意图一致。",
+        "score": 1.0
+      },
+      {
+        "id": "NF-06",
+        "gt": "无状态服务设计，服务本身不持有请求状态",
+        "best_match": "YES  \n第41条“服务采用无状态设计”与参考条目核心意图完全一致。",
+        "score": 1.0
+      },
+      {
+        "id": "NF-07",
+        "gt": "MVP 阶段采用单体架构，不做微服务拆分",
+        "best_match": "YES",
+        "score": 1.0
+      }
+    ],
+    "unmatched": [
+      {
+        "id": "F-05",
+        "gt": "通过结构收敛（Chunker → Arranger → Canonicalizer）最大化厂商侧 KV Cache 命中率，降低调用成本",
+        "best_match": "NO，AI生成列表中没有一条完整描述“通过结构收敛（Chunker→Arranger→Canonicalizer）最大化厂商侧KV Cache命中率”的核心意图，仅包含部分模块实现或指标。",
+        "score": 0.0
+      },
+      {
+        "id": "F-09",
+        "gt": "用量统计功能，展示 API 调用量和成本节省数据",
+        "best_match": "NO，因为参考条目要求同时展示API调用量和成本节省数据，而列表中第23条只提及调用量，第24条只提及成本节省，没有一条完全覆盖二者。",
+        "score": 0.0
+      }
+    ],
+    "recall": 0.9090909090909091,
+    "gt_total": 22,
+    "matched_count": 20
+  },
+  "ambiguity_recall": {
+    "matched_explicit": [
+      {
+        "id": "A-02",
+        "type": "explicit",
+        "gt": "「完成 50 个子 Agent 测试工程师的验收」含义不明——是自动化测试 Agent 还是人工测试员？验收通过的具体标准是什么？",
+        "best_match": "YES  \nAI列表中的第4、5、6条与参考条目核心意图一致，均质疑“完成50个子Agent测试工程师的验收”含义不明，需澄清是自动化测试Agent还是人工测试员及验收标准。",
+        "score": 1.0
+      }
+    ],
+    "unmatched_explicit": [
+      {
+        "id": "A-01",
+        "type": "explicit",
+        "gt": "管理后台前端界面是否属于 MVP 范围？技术栈标注为「Phase 2」，但优先级 P2 中列有「管理后台界面」，实际交付时间点不明确。",
+        "best_match": "NO，AI生成列表中没有一条与参考条目语义等价，参考条目关注管理后台前端界面在MVP中的范围及交付时间点不明确，而AI条目关注管理后台API的具体形态和端点。",
+        "score": 0.0
+      }
+    ],
+    "matched_implicit": [],
+    "unmatched_implicit": [
+      {
+        "id": "A-03",
+        "type": "implicit",
+        "gt": "API Key 管理的具体功能范围未定义：是否支持权限分级（只读/读写）、过期时间、IP 白名单、使用配额限制？",
+        "best_match": "NO，因为AI生成条目未提及参考条目中的IP白名单和使用配额限制，覆盖范围不完全等价。",
+        "score": 0.0
+      },
+      {
+        "id": "A-04",
+        "type": "implicit",
+        "gt": "计费查询的数据粒度未定义：按请求/天/月汇总？展示哪些维度（模型、Key、时间段）？",
+        "best_match": "NO，AI生成列表中没有任何一条涉及计费查询的汇总粒度（按请求/天/月）或展示维度（模型、Key、时间段），因此与参考条目语义不等价。",
+        "score": 0.0
+      },
+      {
+        "id": "A-05",
+        "type": "implicit",
+        "gt": "请求去重的有效时间窗口未定义：相同请求在多长时间内触发去重（秒级？分钟级）？不同模型是否共用同一去重策略？",
+        "best_match": "NO。AI 生成列表中的去重相关条目（如第13条）仅涉及缓存 TTL，未涵盖参考条目中“不同模型是否共用同一去重策略”这一核心问题。",
+        "score": 0.0
+      },
+      {
+        "id": "A-06",
+        "type": "implicit",
+        "gt": "速率限制策略未定义：按用户/API Key/IP 限速？QPS 或并发上限是多少？超限后是拒绝还是排队？",
+        "best_match": "NO，AI生成列表中没有任何条目涉及速率限制中间件的限速策略（如维度、QPS、超限处理），全部聚焦于其他功能点。",
+        "score": 0.0
+      },
+      {
+        "id": "A-07",
+        "type": "implicit",
+        "gt": "目标用户定义为「个人开发者」，但管理后台暗示多用户场景——多用户共用同一实例时，用量、计费、API Key 数据如何隔离？",
+        "best_match": "NO。AI生成列表中没有一条涉及“个人开发者”目标用户定义与多用户场景下数据隔离问题的核心内容。",
+        "score": 0.0
+      },
+      {
+        "id": "A-08",
+        "type": "implicit",
+        "gt": "DeepSeek V3.2 服务不可用时的降级策略未定义：直接返回错误、自动重试、还是切换到备用模型？",
+        "best_match": "NO，AI生成列表中所有条目均未涉及DeepSeek V3.2服务不可用时的降级策略。",
+        "score": 0.0
+      }
+    ],
+    "explicit_recall": 0.5,
+    "implicit_recall": 0.0,
+    "overall_recall": 0.125,
+    "gt_total": 8,
+    "matched_count": 1
+  }
+}

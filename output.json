@@ -1,0 +1,786 @@
+{
+  "prd_title": "电商购物车与结账功能",
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "type": "functional",
+      "description": "用户可从商品列表页将商品加入购物车",
+      "priority": "high",
+      "source_section": "功能需求 - 购物车"
+    },
+    {
+      "id": "REQ-002",
+      "type": "functional",
+      "description": "用户可从商品详情页将商品加入购物车",
+      "priority": "high",
+      "source_section": "功能需求 - 购物车"
+    },
+    {
+      "id": "REQ-003",
+      "type": "functional",
+      "description": "购物车跨Session持久化，用户在不同会话间不应丢失购物车内容",
+      "priority": "high",
+      "source_section": "功能需求 - 购物车"
+    },
+    {
+      "id": "REQ-004",
+      "type": "functional",
+      "description": "用户可修改购物车中商品的数量",
+      "priority": "high",
+      "source_section": "功能需求 - 购物车"
+    },
+    {
+      "id": "REQ-005",
+      "type": "functional",
+      "description": "用户可删除购物车中的商品",
+      "priority": "high",
+      "source_section": "功能需求 - 购物车"
+    },
+    {
+      "id": "REQ-006",
+      "type": "functional",
+      "description": "购物车实时显示含税价格总计",
+      "priority": "high",
+      "source_section": "功能需求 - 购物车"
+    },
+    {
+      "id": "REQ-007",
+      "type": "functional",
+      "description": "用户可在购物车中使用折扣码",
+      "priority": "medium",
+      "source_section": "功能需求 - 购物车"
+    },
+    {
+      "id": "REQ-008",
+      "type": "functional",
+      "description": "系统须处理库存限制，用户不能超出可用库存数量下单",
+      "priority": "high",
+      "source_section": "功能需求 - 购物车"
+    },
+    {
+      "id": "REQ-009",
+      "type": "functional",
+      "description": "结账流程要求用户已登录",
+      "priority": "high",
+      "source_section": "功能需求 - 结账流程"
+    },
+    {
+      "id": "REQ-010",
+      "type": "functional",
+      "description": "用户可填写新的收货地址",
+      "priority": "high",
+      "source_section": "功能需求 - 结账流程"
+    },
+    {
+      "id": "REQ-011",
+      "type": "functional",
+      "description": "用户可选择已有的收货地址",
+      "priority": "high",
+      "source_section": "功能需求 - 结账流程"
+    },
+    {
+      "id": "REQ-012",
+      "type": "functional",
+      "description": "系统支持多种支付方式",
+      "priority": "high",
+      "source_section": "功能需求 - 结账流程"
+    },
+    {
+      "id": "REQ-013",
+      "type": "functional",
+      "description": "用户在最终确认订单前可查看订单摘要",
+      "priority": "high",
+      "source_section": "功能需求 - 结账流程"
+    },
+    {
+      "id": "REQ-014",
+      "type": "functional",
+      "description": "支付成功后向用户发送确认邮件",
+      "priority": "high",
+      "source_section": "功能需求 - 结账流程"
+    },
+    {
+      "id": "REQ-015",
+      "type": "functional",
+      "description": "支付失败时展示明确的错误信息",
+      "priority": "high",
+      "source_section": "功能需求 - 结账流程"
+    },
+    {
+      "id": "REQ-016",
+      "type": "functional",
+      "description": "支付失败时允许用户重试支付",
+      "priority": "high",
+      "source_section": "功能需求 - 结账流程"
+    },
+    {
+      "id": "REQ-017",
+      "type": "functional",
+      "description": "用户可查看历史订单列表",
+      "priority": "medium",
+      "source_section": "功能需求 - 订单管理"
+    },
+    {
+      "id": "REQ-018",
+      "type": "functional",
+      "description": "用户可追踪当前订单的状态",
+      "priority": "medium",
+      "source_section": "功能需求 - 订单管理"
+    },
+    {
+      "id": "REQ-019",
+      "type": "functional",
+      "description": "用户可在下单后的合理时间窗口内取消订单",
+      "priority": "medium",
+      "source_section": "功能需求 - 订单管理"
+    },
+    {
+      "id": "REQ-020",
+      "type": "non_functional",
+      "description": "购物车操作（增、删、改）须在200ms内完成",
+      "priority": "high",
+      "source_section": "非功能需求 - 性能"
+    },
+    {
+      "id": "REQ-021",
+      "type": "non_functional",
+      "description": "结账页面须在2秒内加载完成",
+      "priority": "high",
+      "source_section": "非功能需求 - 性能"
+    },
+    {
+      "id": "REQ-022",
+      "type": "non_functional",
+      "description": "系统需支撑大促期间的流量峰值",
+      "priority": "high",
+      "source_section": "非功能需求 - 性能"
+    },
+    {
+      "id": "REQ-023",
+      "type": "non_functional",
+      "description": "支付卡数据绝不存储于服务器",
+      "priority": "high",
+      "source_section": "非功能需求 - 安全性"
+    },
+    {
+      "id": "REQ-024",
+      "type": "non_functional",
+      "description": "所有结账页面须使用HTTPS",
+      "priority": "high",
+      "source_section": "非功能需求 - 安全性"
+    },
+    {
+      "id": "REQ-025",
+      "type": "non_functional",
+      "description": "用户支付信息通过符合PCI标准的支付处理商处理",
+      "priority": "high",
+      "source_section": "非功能需求 - 安全性"
+    },
+    {
+      "id": "REQ-026",
+      "type": "non_functional",
+      "description": "购物车数据在系统故障时不得丢失",
+      "priority": "high",
+      "source_section": "非功能需求 - 可靠性"
+    },
+    {
+      "id": "REQ-027",
+      "type": "non_functional",
+      "description": "支付处理须幂等以防止重复扣款",
+      "priority": "high",
+      "source_section": "非功能需求 - 可靠性"
+    },
+    {
+      "id": "REQ-028",
+      "type": "functional",
+      "description": "系统需有商品列表页用于展示商品",
+      "priority": "high",
+      "source_section": "概述/背景（隐含需求）"
+    },
+    {
+      "id": "REQ-029",
+      "type": "functional",
+      "description": "系统需有商品详情页用于展示商品详细信息",
+      "priority": "high",
+      "source_section": "概述/背景（隐含需求）"
+    },
+    {
+      "id": "REQ-030",
+      "type": "functional",
+      "description": "需要用户账户系统支持登录功能",
+      "priority": "high",
+      "source_section": "功能需求 - 结账流程（隐含需求）"
+    },
+    {
+      "id": "REQ-031",
+      "type": "functional",
+      "description": "需要集成第三方符合PCI标准的支付处理商",
+      "priority": "high",
+      "source_section": "非功能需求 - 安全性"
+    },
+    {
+      "id": "REQ-032",
+      "type": "functional",
+      "description": "需要邮件发送系统支持确认邮件通知",
+      "priority": "high",
+      "source_section": "功能需求 - 结账流程"
+    },
+    {
+      "id": "REQ-033",
+      "type": "functional",
+      "description": "系统需与库存管理系统集成，实时校验库存可用性",
+      "priority": "high",
+      "source_section": "功能需求 - 购物车"
+    },
+    {
+      "id": "REQ-034",
+      "type": "functional",
+      "description": "折扣码应用后需实时更新购物车价格总计",
+      "priority": "medium",
+      "source_section": "功能需求 - 购物车"
+    },
+    {
+      "id": "REQ-035",
+      "type": "functional",
+      "description": "价格总计需包含税费计算",
+      "priority": "high",
+      "source_section": "功能需求 - 购物车"
+    },
+    {
+      "id": "REQ-036",
+      "type": "constraint",
+      "description": "本期不支持访客结账（待确认），默认要求用户登录",
+      "priority": "medium",
+      "source_section": "待确认问题"
+    },
+    {
+      "id": "REQ-037",
+      "type": "constraint",
+      "description": "不支持订阅/周期性付款",
+      "priority": "low",
+      "source_section": "不在范围内"
+    },
+    {
+      "id": "REQ-038",
+      "type": "constraint",
+      "description": "不支持分次付款",
+      "priority": "low",
+      "source_section": "不在范围内"
+    },
+    {
+      "id": "REQ-039",
+      "type": "constraint",
+      "description": "不支持礼品卡",
+      "priority": "low",
+      "source_section": "不在范围内"
+    }
+  ],
+  "ambiguities": [
+    {
+      "id": "AMB-001",
+      "location": "功能需求 - 结账流程 / 待确认问题",
+      "issue": "PRD明确说明'结账需要用户登录（访客结账待定）'，该决策直接影响登录流程设计和转化率指标",
+      "clarifying_question": "本期是否支持访客结账？如果不支持，是否有统一的注册/登录流程设计方案？"
+    },
+    {
+      "id": "AMB-002",
+      "location": "功能需求 - 结账流程 / 待确认问题",
+      "issue": "PRD要求'系统支持多种支付方式'但仅明确了信用卡，PayPal和Apple Pay未确认",
+      "clarifying_question": "首发支持哪些支付方式？除信用卡外，PayPal、Apple Pay是否纳入第一期？是否有其他支付方式需求（如支付宝、微信支付、银联等）？"
+    },
+    {
+      "id": "AMB-003",
+      "location": "功能需求 - 订单管理 / 待确认问题",
+      "issue": "'合理时间窗口'未明确定义，影响功能实现和业务规则",
+      "clarifying_question": "订单取消的'合理时间窗口'具体是多久——支付后1小时、24小时，还是订单发货前均可取消？"
+    },
+    {
+      "id": "AMB-004",
+      "location": "功能需求 - 订单管理 / 待确认问题",
+      "issue": "部分商品取消场景的处理策略未定义，涉及退款逻辑",
+      "clarifying_question": "若订单中仅部分商品取消，如何处理部分退款？退款按比例计算还是固定规则？退款时效是多久？"
+    },
+    {
+      "id": "AMB-005",
+      "location": "功能需求 - 结账流程 / 待确认问题",
+      "issue": "国际配送涉及地址格式、税费计算、运费规则等多个复杂功能",
+      "clarifying_question": "第一期是否需要支持国际配送？如果支持，目标国家和地区是哪些？税费和运费规则如何确定？"
+    },
+    {
+      "id": "AMB-006",
+      "location": "功能需求 - 购物车",
+      "issue": "折扣码的生成、管理和验证机制未定义，也没有说明折扣类型（百分比折扣、固定金额折扣、满减等）",
+      "clarifying_question": "折扣码的管理后台和验证规则是什么？支持的折扣类型有哪些？折扣码是否有有效期、使用次数限制？"
+    },
+    {
+      "id": "AMB-007",
+      "location": "功能需求 - 购物车",
+      "issue": "未明确含税价格中的税率如何确定——按商品分类、用户所在地还是其他规则",
+      "clarifying_question": "税费计算规则是什么？是按商品品类、用户收货地址所在地区还是统一税率？系统是否需要集成第三方税务计算服务？"
+    },
+    {
+      "id": "AMB-008",
+      "location": "非功能需求 - 性能",
+      "issue": "'大促期间的流量峰值'没有具体量化指标",
+      "clarifying_question": "大促期间需要支撑的具体流量峰值是多少？期望的并发用户数、QPS/TPS指标是什么？是否有历史数据或业务预估？"
+    },
+    {
+      "id": "AMB-009",
+      "location": "功能需求 - 结账流程",
+      "issue": "支付失败'允许重试'的具体实现逻辑未定义——重试是重新发起完整支付流程还是从断点继续？重试次数是否有限制？",
+      "clarifying_question": "支付失败重试的具体交互逻辑是怎样的？是让用户返回支付方式选择页面重新开始，还是在当前页直接重试？重试次数有无限制？"
+    },
+    {
+      "id": "AMB-010",
+      "location": "功能需求 - 结账流程",
+      "issue": "未明确确认邮件的具体内容模板和发送时机",
+      "clarifying_question": "确认邮件应包含哪些信息（订单号、商品清单、金额、预计送达时间等）？邮件发送是支付成功后立即发送还是有延迟？"
+    },
+    {
+      "id": "AMB-011",
+      "location": "功能需求 - 订单管理",
+      "issue": "未定义订单有哪些状态（状态机）以及状态流转规则",
+      "clarifying_question": "订单状态有哪几种（如：待支付、已支付、已发货、配送中、已签收、已取消、已退款等）？各自流转条件是什么？"
+    },
+    {
+      "id": "AMB-012",
+      "location": "功能需求 - 结账流程",
+      "issue": "未说明收货地址的验证机制——是否需要验证地址真实性？是否需要调用地址库或地图API？",
+      "clarifying_question": "收货地址是否需要格式校验和真实性验证？是否集成地址补全/自动建议服务？"
+    },
+    {
+      "id": "AMB-013",
+      "location": "非功能需求 - 可靠性",
+      "issue": "'购物车数据在系统故障时不得丢失'的实现策略未定义——数据持久化到数据库还是使用Redis等缓存持久化？",
+      "clarifying_question": "购物车数据的持久化方案是什么？推荐使用数据库持久化以确保可靠性，并配合缓存提升读取性能，是否有技术方案倾向？"
+    },
+    {
+      "id": "AMB-014",
+      "location": "功能需求 - 购物车",
+      "issue": "未说明同一商品多次加入购物车时的处理逻辑——是合并数量还是作为独立条目？",
+      "clarifying_question": "当用户将同一商品多次加入购物车时，是累加商品数量还是作为独立的购物车条目展示？"
+    },
+    {
+      "id": "AMB-015",
+      "location": "功能需求 - 购物车",
+      "issue": "未说明商品列表页和详情页加入购物车的交互方式（是否需要有加入成功的反馈？数量选择逻辑？）",
+      "clarifying_question": "加入购物车的交互设计是什么？商品列表页是直接加1件还是弹出数量选择器？加入后是否有成功提示（Toast/徽标动画等）？"
+    },
+    {
+      "id": "AMB-016",
+      "location": "功能需求 - 结账流程",
+      "issue": "未说明是否支持运费计算以及免运费门槛",
+      "clarifying_question": "是否需要计算运费？如果有，运费规则是什么（按金额门槛免运费、按重量/距离计算等）？"
+    },
+    {
+      "id": "AMB-017",
+      "location": "功能需求 - 购物车",
+      "issue": "未说明折扣码是否可与商品其他优惠（如秒杀价、会员价等）叠加使用",
+      "clarifying_question": "折扣码是否可与商品现有促销活动叠加使用？是否有优惠优先级规则？"
+    },
+    {
+      "id": "AMB-018",
+      "location": "功能需求 - 结账流程",
+      "issue": "未说明登录时机——是在进入结账前要求登录，还是在点击'去结算'时跳转登录",
+      "clarifying_question": "登录流程的触发时机是什么？用户点击'去结算'后跳转到登录页，还是在浏览购物车时即要求登录？"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "TASK-001",
+      "title": "搭建项目基础架构",
+      "description": "初始化项目框架和基础设施",
+      "acceptance_criteria": [
+        "项目框架搭建完成可运行",
+        "数据库表和CI/CD已配置"
+      ],
+      "effort_estimate": "3-5天",
+      "risk_level": "medium",
+      "dependencies": [],
+      "related_requirements": [
+        "REQ-028",
+        "REQ-029",
+        "REQ-021"
+      ]
+    },
+    {
+      "id": "TASK-002",
+      "title": "实现用户认证系统",
+      "description": "实现登录注册和会话管理",
+      "acceptance_criteria": [
+        "用户可注册和登录系统",
+        "访客无法进入结账流程"
+      ],
+      "effort_estimate": "3-5天",
+      "risk_level": "medium",
+      "dependencies": [
+        "TASK-001"
+      ],
+      "related_requirements": [
+        "REQ-009",
+        "REQ-030",
+        "REQ-036"
+      ]
+    },
+    {
+      "id": "TASK-003",
+      "title": "实现商品列表页",
+      "description": "构建商品列表展示页面",
+      "acceptance_criteria": [
+        "商品列表正确展示数据",
+        "列表页可加入购物车"
+      ],
+      "effort_estimate": "2-3天",
+      "risk_level": "low",
+      "dependencies": [
+        "TASK-001"
+      ],
+      "related_requirements": [
+        "REQ-001",
+        "REQ-028"
+      ]
+    },
+    {
+      "id": "TASK-004",
+      "title": "实现商品详情页",
+      "description": "构建商品详情展示页面",
+      "acceptance_criteria": [
+        "商品详情信息展示完整",
+        "详情页可加入购物车"
+      ],
+      "effort_estimate": "2-3天",
+      "risk_level": "low",
+      "dependencies": [
+        "TASK-001"
+      ],
+      "related_requirements": [
+        "REQ-002",
+        "REQ-029"
+      ]
+    },
+    {
+      "id": "TASK-005",
+      "title": "设计购物车数据模型",
+      "description": "设计购物车持久化方案",
+      "acceptance_criteria": [
+        "购物车数据持久化存储",
+        "数据模型覆盖所有字段"
+      ],
+      "effort_estimate": "1-2天",
+      "risk_level": "low",
+      "dependencies": [
+        "TASK-001"
+      ],
+      "related_requirements": [
+        "REQ-003",
+        "REQ-026"
+      ]
+    },
+    {
+      "id": "TASK-006",
+      "title": "实现购物车后端API",
+      "description": "实现购物车增删改查接口",
+      "acceptance_criteria": [
+        "增删改查接口响应正常",
+        "超库存时拒绝下单"
+      ],
+      "effort_estimate": "3-5天",
+      "risk_level": "medium",
+      "dependencies": [
+        "TASK-005"
+      ],
+      "related_requirements": [
+        "REQ-004",
+        "REQ-005",
+        "REQ-008",
+        "REQ-020",
+        "REQ-033"
+      ]
+    },
+    {
+      "id": "TASK-007",
+      "title": "实现购物车前端交互",
+      "description": "构建购物车页面交互功能",
+      "acceptance_criteria": [
+        "购物车页面增删改可用",
+        "操作成功有视觉反馈"
+      ],
+      "effort_estimate": "3-5天",
+      "risk_level": "medium",
+      "dependencies": [
+        "TASK-003",
+        "TASK-004",
+        "TASK-006"
+      ],
+      "related_requirements": [
+        "REQ-001",
+        "REQ-002",
+        "REQ-004",
+        "REQ-005"
+      ]
+    },
+    {
+      "id": "TASK-008",
+      "title": "实现含税价格计算",
+      "description": "实现含税价格计算逻辑",
+      "acceptance_criteria": [
+        "购物车总价含税计算正确",
+        "修改数量后总价实时更新"
+      ],
+      "effort_estimate": "1-2天",
+      "risk_level": "medium",
+      "dependencies": [
+        "TASK-006"
+      ],
+      "related_requirements": [
+        "REQ-006",
+        "REQ-035"
+      ]
+    },
+    {
+      "id": "TASK-009",
+      "title": "实现折扣码系统",
+      "description": "实现折扣码验证和应用",
+      "acceptance_criteria": [
+        "有效折扣码可成功应用",
+        "无效折扣码提示错误"
+      ],
+      "effort_estimate": "2-3天",
+      "risk_level": "medium",
+      "dependencies": [
+        "TASK-006"
+      ],
+      "related_requirements": [
+        "REQ-007",
+        "REQ-034"
+      ]
+    },
+    {
+      "id": "TASK-010",
+      "title": "实现收货地址管理",
+      "description": "实现地址增删改选功能",
+      "acceptance_criteria": [
+        "用户可新增收货地址",
+        "用户可选择已有地址"
+      ],
+      "effort_estimate": "2-3天",
+      "risk_level": "low",
+      "dependencies": [
+        "TASK-002"
+      ],
+      "related_requirements": [
+        "REQ-010",
+        "REQ-011"
+      ]
+    },
+    {
+      "id": "TASK-011",
+      "title": "集成支付处理商",
+      "description": "集成第三方支付服务商",
+      "acceptance_criteria": [
+        "信用卡支付流程可走通",
+        "卡号不存储于服务器"
+      ],
+      "effort_estimate": "3-5天",
+      "risk_level": "high",
+      "dependencies": [
+        "TASK-002"
+      ],
+      "related_requirements": [
+        "REQ-012",
+        "REQ-023",
+        "REQ-025",
+        "REQ-031"
+      ]
+    },
+    {
+      "id": "TASK-012",
+      "title": "实现幂等支付处理",
+      "description": "防止支付重复扣款",
+      "acceptance_criteria": [
+        "重复请求不重复扣款",
+        "支付失败可安全重试"
+      ],
+      "effort_estimate": "2-3天",
+      "risk_level": "high",
+      "dependencies": [
+        "TASK-011"
+      ],
+      "related_requirements": [
+        "REQ-027"
+      ]
+    },
+    {
+      "id": "TASK-013",
+      "title": "实现结账流程页面",
+      "description": "构建多步骤结账页面",
+      "acceptance_criteria": [
+        "结账页面2秒内加载完",
+        "订单摘要信息展示完整"
+      ],
+      "effort_estimate": "3-5天",
+      "risk_level": "medium",
+      "dependencies": [
+        "TASK-007",
+        "TASK-008",
+        "TASK-010"
+      ],
+      "related_requirements": [
+        "REQ-009",
+        "REQ-013"
+      ]
+    },
+    {
+      "id": "TASK-014",
+      "title": "实现支付结果处理",
+      "description": "处理支付成功或失败",
+      "acceptance_criteria": [
+        "支付成功跳转订单页",
+        "支付失败显示错误提示"
+      ],
+      "effort_estimate": "2-3天",
+      "risk_level": "medium",
+      "dependencies": [
+        "TASK-011",
+        "TASK-012",
+        "TASK-013"
+      ],
+      "related_requirements": [
+        "REQ-015",
+        "REQ-016"
+      ]
+    },
+    {
+      "id": "TASK-015",
+      "title": "实现确认邮件发送",
+      "description": "支付成功后发送邮件",
+      "acceptance_criteria": [
+        "支付成功后立即发邮件",
+        "邮件包含订单核心信息"
+      ],
+      "effort_estimate": "1-2天",
+      "risk_level": "low",
+      "dependencies": [
+        "TASK-002"
+      ],
+      "related_requirements": [
+        "REQ-014",
+        "REQ-032"
+      ]
+    },
+    {
+      "id": "TASK-016",
+      "title": "实现订单状态管理",
+      "description": "实现订单状态流转管理",
+      "acceptance_criteria": [
+        "订单状态流转逻辑正确",
+        "用户可查看当前状态"
+      ],
+      "effort_estimate": "2-3天",
+      "risk_level": "medium",
+      "dependencies": [
+        "TASK-002",
+        "TASK-011"
+      ],
+      "related_requirements": [
+        "REQ-018"
+      ]
+    },
+    {
+      "id": "TASK-017",
+      "title": "实现历史订单列表",
+      "description": "展示用户历史订单列表",
+      "acceptance_criteria": [
+        "历史订单列表展示正确",
+        "可点击查看订单详情"
+      ],
+      "effort_estimate": "2-3天",
+      "risk_level": "low",
+      "dependencies": [
+        "TASK-016"
+      ],
+      "related_requirements": [
+        "REQ-017"
+      ]
+    },
+    {
+      "id": "TASK-018",
+      "title": "实现订单取消功能",
+      "description": "实现订单取消业务逻辑",
+      "acceptance_criteria": [
+        "规定时间内可取消订单",
+        "超时后取消按钮不可用"
+      ],
+      "effort_estimate": "1-2天",
+      "risk_level": "medium",
+      "dependencies": [
+        "TASK-016"
+      ],
+      "related_requirements": [
+        "REQ-019"
+      ]
+    },
+    {
+      "id": "TASK-019",
+      "title": "配置HTTPS安全",
+      "description": "配置全站HTTPS加密",
+      "acceptance_criteria": [
+        "所有页面强制HTTPS访问",
+        "HTTP请求自动跳转HTTPS"
+      ],
+      "effort_estimate": "0.5-1天",
+      "risk_level": "low",
+      "dependencies": [
+        "TASK-001"
+      ],
+      "related_requirements": [
+        "REQ-024"
+      ]
+    },
+    {
+      "id": "TASK-020",
+      "title": "性能优化与压测",
+      "description": "优化性能并压测验证",
+      "acceptance_criteria": [
+        "增删改操作≤200ms",
+        "大促峰值可稳定运行"
+      ],
+      "effort_estimate": "3-5天",
+      "risk_level": "medium",
+      "dependencies": [
+        "TASK-006",
+        "TASK-013"
+      ],
+      "related_requirements": [
+        "REQ-020",
+        "REQ-021",
+        "REQ-022"
+      ]
+    },
+    {
+      "id": "TASK-021",
+      "title": "实现购物车数据备份",
+      "description": "保障购物车数据不丢失",
+      "acceptance_criteria": [
+        "故障后购物车数据可恢复",
+        "数据备份策略已配置"
+      ],
+      "effort_estimate": "1-2天",
+      "risk_level": "low",
+      "dependencies": [
+        "TASK-005"
+      ],
+      "related_requirements": [
+        "REQ-026"
+      ]
+    }
+  ],
+  "summary": {
+    "total_requirements": 39,
+    "functional_count": 27,
+    "non_functional_count": 8,
+    "ambiguity_count": 18,
+    "total_tasks": 21,
+    "estimated_total_effort": "8-10周（3-4人研发团队）"
+  }
+}

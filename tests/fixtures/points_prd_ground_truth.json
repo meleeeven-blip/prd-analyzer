@@ -1,0 +1,224 @@
+{
+  "_comment": "points_prd.md 的人工标注 ground truth，用于 evaluate.py 的效果评测。",
+  "source_file": "points_prd.md",
+  "requirements": {
+    "total": 20,
+    "functional": [
+      {
+        "id": "F-01",
+        "description": "用户每日首次登录可完成签到并获得积分奖励",
+        "section": "积分获取",
+        "priority": "high"
+      },
+      {
+        "id": "F-02",
+        "description": "连续签到可获得额外奖励，连续天数越多奖励越高",
+        "section": "积分获取",
+        "priority": "high"
+      },
+      {
+        "id": "F-03",
+        "description": "用户每笔消费可按金额比例获得积分",
+        "section": "积分获取",
+        "priority": "high"
+      },
+      {
+        "id": "F-04",
+        "description": "用户完成指定任务可获得一次性积分奖励",
+        "section": "积分获取",
+        "priority": "medium"
+      },
+      {
+        "id": "F-05",
+        "description": "积分到账后须实时通知用户",
+        "section": "积分获取",
+        "priority": "medium"
+      },
+      {
+        "id": "F-06",
+        "description": "用户可查看当前积分余额",
+        "section": "积分管理",
+        "priority": "high"
+      },
+      {
+        "id": "F-07",
+        "description": "用户可查看积分明细，包含获取和消耗记录",
+        "section": "积分管理",
+        "priority": "high"
+      },
+      {
+        "id": "F-08",
+        "description": "积分有有效期，过期积分自动清零",
+        "section": "积分管理",
+        "priority": "high"
+      },
+      {
+        "id": "F-09",
+        "description": "系统须在积分过期前通过合适渠道提醒用户",
+        "section": "积分管理",
+        "priority": "medium"
+      },
+      {
+        "id": "F-10",
+        "description": "用户可用积分兑换优惠券",
+        "section": "积分兑换",
+        "priority": "high"
+      },
+      {
+        "id": "F-11",
+        "description": "用户可用积分兑换实物商品",
+        "section": "积分兑换",
+        "priority": "high"
+      },
+      {
+        "id": "F-12",
+        "description": "兑换时须校验积分余额，不足时展示差额并引导获取",
+        "section": "积分兑换",
+        "priority": "high"
+      },
+      {
+        "id": "F-13",
+        "description": "成功兑换后积分立即扣减，兑换记录可查",
+        "section": "积分兑换",
+        "priority": "high"
+      },
+      {
+        "id": "F-14",
+        "description": "运营可在后台配置各类积分规则",
+        "section": "积分规则管理",
+        "priority": "high"
+      },
+      {
+        "id": "F-15",
+        "description": "运营可上下线兑换商城中的商品或优惠券",
+        "section": "积分规则管理",
+        "priority": "medium"
+      },
+      {
+        "id": "F-16",
+        "description": "规则变更须有生效时间配置，不影响变更前已发放的积分",
+        "section": "积分规则管理",
+        "priority": "high"
+      }
+    ],
+    "non_functional": [
+      {
+        "id": "N-01",
+        "description": "积分查询接口响应时间须在 300ms 以内",
+        "section": "性能",
+        "priority": "high"
+      },
+      {
+        "id": "N-02",
+        "description": "签到高峰期（每日 0 点前后）系统须保持正常服务",
+        "section": "性能",
+        "priority": "high"
+      },
+      {
+        "id": "N-03",
+        "description": "积分发放和扣减须保证幂等，防止重复计算",
+        "section": "准确性",
+        "priority": "high"
+      },
+      {
+        "id": "N-04",
+        "description": "积分余额须与明细记录完全一致，不允许出现对账差异",
+        "section": "准确性",
+        "priority": "high"
+      }
+    ]
+  },
+  "ambiguities": {
+    "total": 12,
+    "items": [
+      {
+        "id": "A-01",
+        "type": "explicit",
+        "location": "积分获取 · F-03",
+        "description": "消费积分比例待运营确认，具体比例未定义（如每消费1元得几分）"
+      },
+      {
+        "id": "A-02",
+        "type": "explicit",
+        "location": "积分管理 · F-08",
+        "description": "积分有效期长度未定义（1年？永久？按自然年还是滚动计算？）"
+      },
+      {
+        "id": "A-03",
+        "type": "explicit",
+        "location": "积分获取 · F-02",
+        "description": "连续签到中断后重新签到，连续天数是否从头计算？"
+      },
+      {
+        "id": "A-04",
+        "type": "explicit",
+        "location": "积分获取 · F-03",
+        "description": "消费积分比例是否对所有商品类目统一，还是分类目差异化配置？"
+      },
+      {
+        "id": "A-05",
+        "type": "explicit",
+        "location": "积分兑换 · F-10",
+        "description": "兑换的优惠券是否有使用门槛（如满100元可用）？"
+      },
+      {
+        "id": "A-06",
+        "type": "implicit",
+        "location": "积分获取 · F-02",
+        "description": "连续签到奖励的具体梯度未定义（连续7天、30天各得多少分？上限是多少天？）"
+      },
+      {
+        "id": "A-07",
+        "type": "implicit",
+        "location": "积分管理 · F-09",
+        "description": "过期提醒的时机和渠道未定义（提前几天提醒？Push、短信还是站内信？）"
+      },
+      {
+        "id": "A-08",
+        "type": "implicit",
+        "location": "积分获取 · F-05",
+        "description": "「实时通知」的渠道未定义（Push？站内消息？两者都要？）"
+      },
+      {
+        "id": "A-09",
+        "type": "implicit",
+        "location": "积分兑换 · F-11",
+        "description": "实物商品兑换的物流由谁承担？需要用户填写收货地址吗？"
+      },
+      {
+        "id": "A-10",
+        "type": "implicit",
+        "location": "积分兑换 · F-10 / F-11",
+        "description": "兑换失败（如库存不足）时积分是否退回？退回时效是多久？"
+      },
+      {
+        "id": "A-11",
+        "type": "implicit",
+        "location": "非功能需求 · N-02",
+        "description": "「0点高峰期」没有量化：正常流量的几倍？是否有具体并发用户数目标？"
+      },
+      {
+        "id": "A-12",
+        "type": "implicit",
+        "location": "积分规则管理 · F-14",
+        "description": "后台配置权限管理未定义：所有运营人员都能修改规则吗？变更是否需要审批流？"
+      }
+    ]
+  },
+  "evaluation_metrics": {
+    "requirement_recall": {
+      "formula": "AI提取需求数（与ground truth匹配）/ 20",
+      "target": "≥ 0.80",
+      "note": "匹配标准：语义覆盖即可，不要求措辞完全一致"
+    },
+    "ambiguity_recall": {
+      "formula": "AI检测到的歧义数（与ground truth匹配）/ 12",
+      "target": "≥ 0.60",
+      "note": "显性歧义（A-01~A-05）目标 ≥ 0.80，隐性歧义（A-06~A-12）目标 ≥ 0.40"
+    },
+    "task_completeness": {
+      "formula": "含 title + acceptance_criteria + effort_estimate 的任务数 / 总任务数",
+      "target": "= 1.00"
+    }
+  }
+}
