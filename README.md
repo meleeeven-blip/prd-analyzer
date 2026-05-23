@@ -1,5 +1,7 @@
 # AI PRD Analyzer — MVP
 
+> 📄 方案文档与复盘文档见 [`docs/`](./docs/) 目录
+
 > **AI Native 组织工作流改造** | 场景：研发团队 PRD → 研发任务智能拆解
 
 一个命令行工具，将产品需求文档（PRD）输入 Claude AI，自动输出：
@@ -209,3 +211,5 @@ main.py (CLI / typer + rich)
 - **Stage 2**：对接 Jira / Linear API，一键创建 issue
 - **Stage 3**：历史 PRD 向量化存储，自动引用类似项目的经验教训
 - **Stage 4**：PM 在提交 PRD 前的实时歧义警告（IDE 插件 / Slack Bot）
+
+
